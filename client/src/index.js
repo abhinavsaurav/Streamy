@@ -7,8 +7,7 @@ import App from "./components/App";
 import reducers from "./components/reducers";
 
 // Hooking up our redux dev tool in chrome (can be done for firefox too)
-const composeEnhancers =
-	window.__REDUX_DEV_TOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducers, composeEnhancers(applyMiddleware()));
 
 ReactDOM.render(
