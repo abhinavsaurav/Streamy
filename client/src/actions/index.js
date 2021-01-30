@@ -1,4 +1,3 @@
-import { formValues } from "redux-form";
 import streams from "../apis/streams";
 import { SIGN_IN, SIGN_OUT } from "./types";
 // these action creator will just flip the boolean flag in the redux store for auth state
@@ -27,6 +26,6 @@ export const signOut = () => {
 // 	};
 // };
 
-export const createStream = (formvalues) => async (dispatch) => {
+export const createStream = (formValues) => async (dispatch) => {
 	streams.post("/streams", formValues);
 };

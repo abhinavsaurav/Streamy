@@ -3,6 +3,7 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 
 import { connect } from "react-redux";
+import { createStream } from "../../actions";
 
 class StreamCreate extends React.Component {
 	// error is the destructured error message from the meta object
@@ -35,9 +36,9 @@ class StreamCreate extends React.Component {
 	};
 
 	//this
-	onSubmit(formValues) {
-		console.log(formValues);
-	}
+	onSubmit = (formValues) => {
+		this.props.createStream(formValues);
+	};
 
 	render() {
 		// console.log(this.props);
@@ -81,7 +82,12 @@ const validate = (formValues) => {
 	return errors;
 };
 
-export default reduxForm({
+const formWrapped = reduxForm({
 	form: "streamCreate",
 	validate, //using the es6 syntax here for key:value pair for validation
 })(StreamCreate);
+
+// we can also put the reduxForm thing directly and it would work but for legibility we are doing the above
+
+// first arg mapStateToProps as a 2nd arg we put our action creator key-value pair
+export default connect(null, { createStream })(formWrapped);
