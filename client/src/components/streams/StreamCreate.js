@@ -3,17 +3,34 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 
 class StreamCreate extends React.Component {
-	renderInput({ input, label, meta }) {
+	// error is the destructured error message from the meta object
+	// touched is a boolean value which becomes true when u select a field and come out of it or lose the focus after selecting one time
+	renderError = ({ error, touched }) => {
+		if (touched && error) {
+			return (
+				<div className="ui error message">
+					<div className="header">{error}</div>
+				</div>
+			);
+		}
+	};
+
+	renderInput = ({ input, label, meta }) => {
 		// console.log(formProps);
 
+		// autoComplete="off" to turn off the autocomplete
+		// console.log(meta);
+
+		// the div having className of error makes the error red
+		const className = `field ${meta.touched && meta.error ? "error" : ""}`;
 		return (
-			<div className="field">
+			<div className={className}>
 				<label>{label}</label>
-				<input {...input} />
-				<div>{meta.error}</div>
+				<input {...input} autoComplete="off" />
+				{this.renderError(meta)}
 			</div>
 		);
-	}
+	};
 
 	//this
 	onSubmit(formValues) {
@@ -25,9 +42,10 @@ class StreamCreate extends React.Component {
 		// label is a prop
 		return (
 			// on passing the prop the handleSubmit handles the form events and after its done our callback gets invoked this will contain
+			// error in classname displays the error on screen otherwise by default the display is set to none for the error message in semantic ui
 			<form
 				onSubmit={this.props.handleSubmit(this.onSubmit)}
-				className="ui form"
+				className="ui form error"
 			>
 				<Field
 					name="title"
