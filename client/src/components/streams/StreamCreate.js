@@ -2,6 +2,8 @@ import React from "react";
 // Field is a react component whereas reduxForm is a function
 import { Field, reduxForm } from "redux-form";
 
+import { connect } from "react-redux";
+
 class StreamCreate extends React.Component {
 	// error is the destructured error message from the meta object
 	// touched is a boolean value which becomes true when u select a field and come out of it or lose the focus after selecting one time

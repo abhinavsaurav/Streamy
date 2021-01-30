@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
 
 import App from "./components/App";
-import reducers from "./components/reducers";
+import reducers from "./reducers";
 
 // Hooking up our redux dev tool in chrome (can be done for firefox too)
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
