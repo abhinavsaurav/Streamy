@@ -34,8 +34,12 @@ export const signOut = () => {
 // 	};
 // };
 
-export const createStream = (formValues) => async (dispatch) => {
-	const response = await streams.post("/streams", formValues);
+export const createStream = (formValues) => async (dispatch, getState) => {
+	// getState is the 2nd argument and is accessing the redux store and pulling out the userId from there
+	const { userId } = getState().auth;
+
+	// basically attaching the formvalues with userId at the starting only
+	const response = await streams.post("/streams", { ...formValues, userId });
 	dispatch({
 		type: CREATE_STREAM,
 		payload: response.data,

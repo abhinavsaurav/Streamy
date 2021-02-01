@@ -9,6 +9,12 @@
       "title": "New Job",
       "description": "I want it",
       "id": 2
+    },
+    {
+      "title": "creating a test stream",
+      "description": "should have uniq gid for gmail user",
+      "userId": "108010986031018071146",
+      "id": 3
     }
   ]
 }
