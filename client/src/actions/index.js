@@ -1,3 +1,4 @@
+import history from "../history";
 import streams from "../apis/streams";
 import {
 	SIGN_IN,
@@ -44,6 +45,10 @@ export const createStream = (formValues) => async (dispatch, getState) => {
 		type: CREATE_STREAM,
 		payload: response.data,
 	});
+
+	// do some programmatic navigation to get user back to the root route
+	// [DONE] TO DO: History push (this is how we navigate a user around) basically using the path we want the user to go
+	history.push("/");
 };
 
 export const fetchStreams = () => async (dispatch) => {
